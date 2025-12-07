@@ -377,7 +377,7 @@ const Port = () => {
                   
                   <motion.div variants={fadeInUp} className="flex gap-3 pt-4 justify-center md:justify-start"> 
                     {/* 1. CV Button dengan Ikon FileText */}
-                    <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-cyan-400/50 text-cyan-300 font-bold text-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)]">
+                    <a href="https://drive.google.com/file/d/18kRdcQJ7f0LARuVYk_AHz7ZjOfJy4R0B/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-cyan-400/50 text-cyan-300 font-bold text-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)]">
                       <FileText size={16} /> 
                       <span>Curriculum Vitae</span>
                     </a>
