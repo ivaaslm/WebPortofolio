@@ -378,9 +378,11 @@ const Port = () => {
       <div className="fixed top-0 left-0 w-96 h-96 bg-purple-600 rounded-full blur-[150px] opacity-20 -translate-x-1/2 -translate-y-1/2 z-0 animate-pulse-slow"></div>
       <div className="fixed bottom-0 right-0 w-96 h-96 bg-cyan-600 rounded-full blur-[150px] opacity-10 translate-x-1/2 translate-y-1/2 z-0"></div>
 
-      {/* Navbar */}
+      {/* Navbar: Responsif (Stack di HP, Row di Desktop) */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'py-4' : 'bg-transparent border-transparent py-6'}`}>
-        <div className="container mx-auto px-6 flex justify-between items-center">
+        <div className="container mx-auto px-6 flex flex-col md:flex-row justify-center md:justify-between items-center gap-4 md:gap-0">
+          
+          {/* LOGO */}
           <motion.div 
             initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}
             className="text-2xl font-bold font-mono text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 tracking-tighter cursor-pointer group relative" onClick={() => scrollTo('home')}>
@@ -388,8 +390,8 @@ const Port = () => {
              <div className="absolute inset-0 bg-purple-500/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
           </motion.div>
           
-          {/* Daftar Menu Navigasi */}
-          <div className="hidden md:flex space-x-0 bg-[#292A3D] p-1.5 rounded-full border border-gray-700/50 shadow-xl">
+          {/* MENU KAPSUL - Muncul di HP (Tengah) dan Desktop (Kanan) */}
+          <div className="flex flex-wrap justify-center items-center space-x-1 md:space-x-0 bg-[#292A3D] p-1.5 rounded-full border border-gray-700/50 shadow-xl overflow-x-auto max-w-full">
             {['Home', 'About', 'Skills', 'Project', 'Contact'].map((item) => {
                  const sectionId = (
                      item === 'Skiils' ? 'skills' : 
@@ -401,7 +403,7 @@ const Port = () => {
               <button 
                 key={item}
                 onClick={() => scrollTo(sectionId)}
-                className={`relative px-6 py-2 text-base font-medium transition-all rounded-full ${
+                className={`relative px-3 py-1 text-xs md:px-6 md:py-2 md:text-base font-medium transition-all rounded-full whitespace-nowrap ${
                   (activeSection === sectionId)
                   ? 'bg-gradient-to-r from-purple-600 to-cyan-500 text-white shadow-lg shadow-purple-500/30' 
                   : 'text-gray-300 hover:text-white hover:bg-white/5'
@@ -412,12 +414,13 @@ const Port = () => {
             );
             })}
           </div>
-          </div>
+        </div>
       </nav>
 
       {/* Hero Wrapper */}
       <div className="relative h-screen" ref={heroRef}>
-          <section id="home" className="absolute inset-0 h-auto min-h-screen flex items-center pt-20 overflow-hidden"> 
+          {/* FIX: Menambahkan padding-top lebih besar di HP (pt-36) agar konten tidak tertutup navbar yang menumpuk */}
+          <section id="home" className="absolute inset-0 h-auto min-h-screen flex items-center pt-36 md:pt-20 overflow-hidden"> 
               <motion.div 
                 style={{ y: heroY, opacity }} 
                 className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-20"
