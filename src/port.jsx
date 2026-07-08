@@ -2,7 +2,8 @@
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { 
   Code, Cpu, Brain, Terminal, Zap, Globe, Server, Wifi, 
-  Github, Linkedin, Mail, ChevronDown, ExternalLink, Layers, MousePointer2, FileText, Send, Instagram
+  Github, Linkedin, Mail, ChevronDown, ExternalLink, Layers, MousePointer2, FileText, Send, Instagram,
+  DatabaseIcon
 } from 'lucide-react';
 import profileImg from './assets/pp.png';
 import ivaImg from './assets/iva.jpg';
@@ -12,13 +13,18 @@ import spamImg from './assets/spam.png';
 import sitbulImg from './assets/sitbul.png';
 import sispakImg from './assets/sispak.png';
 import mechiuImg from './assets/mechiu.jpg';
-// --- Impor Gambar Proyek Baru ---
 import robotImg from './assets/robot.jpg';
 import wasteImg from './assets/waste.png';
 import tomatifyImg from './assets/Tomatify.png';
-// --- Impor Gambar Tambahan (Kid Corious & Portfolio) ---
+import prediksiImg from './assets/prediksi.png';
+import topologiImg from './assets/topologi.png';
+import biImg from './assets/BI.png';
+import dashboardImg from './assets/dashboard.png';
 import figmaImg from './assets/figma.png';
 import portofolioImg from './assets/portofolio.png';
+// --- Impor Gambar Experience ---
+import ptjImg from './assets/skl.png';
+import ptjSecondImg from './assets/profile.jpeg';
 // ------------------------------------
 
 // --- CSS Styles ---
@@ -151,7 +157,7 @@ const Port = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
       
-      const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+      const sections = ['home', 'about', 'experience', 'skills', 'projects', 'certificate', 'contact'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -177,6 +183,57 @@ const Port = () => {
     }
   };
 
+  // Data untuk Experience Section
+  const experiences = [
+    {
+      company: "Perusahaan Umum Jasa Tirta II",
+      role: "Internship",
+      images: [ptjImg, ptjSecondImg],
+      points: [
+        "Inspected SCADA communication networks.",
+        "Developed a real-time monitoring dashboard using Node-RED, HeidiSQL, and Grafana via Modbus RTU.",
+        "Developed a predictive machine learning model to estimate electricity production.",
+        "Designed network topologies using Cisco Packet Tracer."
+      ]
+    }
+  ];
+
+  // Data untuk Certificate Section
+  const certificates = [
+    {
+      title: "Data Analyst - BNSP RI",
+      link: "https://drive.google.com/file/d/1q70MzcCHvCcNgCZmSWY8rBeDnFXFWdC2/view?usp=sharing",
+      tags: ["BNSP RI", "Business Intelligence", "Microsoft Excel", "Google Data Studio", "Tableau"],
+      hoverShadow: "hover:shadow-[0_0_50px_rgba(6,182,212,0.3)]",
+      hoverBorder: "hover:border-cyan-500/50",
+      hoverText: "group-hover:text-cyan-400",
+      tagBg: "bg-cyan-500/10",
+      tagText: "text-cyan-300",
+      tagBorder: "border-cyan-500/20"
+    },
+    {
+      title: "Short Course Of Data Analyst",
+      link: "https://drive.google.com/file/d/1WNfOiIh2ZDYiYrxPxfI96HtrHs9m8pL3/view?usp=sharing",
+      tags: ["Data Analytics", "Business Intelligence", "Google Data Studio"],
+      hoverShadow: "hover:shadow-[0_0_50px_rgba(139,92,246,0.3)]",
+      hoverBorder: "hover:border-purple-500/50",
+      hoverText: "group-hover:text-purple-400",
+      tagBg: "bg-purple-500/10",
+      tagText: "text-purple-300",
+      tagBorder: "border-purple-500/20"
+    },
+    {
+      title: "Machine Learning with Python",
+      link: "https://drive.google.com/file/d/1kQK9plcBVrmvvgVBcAN2NIGruayMexeP/view?usp=sharing",
+      tags: ["Python", "Machine Learning", "Data Science", "Scikit-learn", "Pandas"],
+      hoverShadow: "hover:shadow-[0_0_50px_rgba(236,72,153,0.3)]",
+      hoverBorder: "hover:border-pink-500/50",
+      hoverText: "group-hover:text-pink-400",
+      tagBg: "bg-pink-500/10",
+      tagText: "text-pink-300",
+      tagBorder: "border-pink-500/20"
+    }
+  ];
   // Data untuk Skills Section 
   const skillCategories = [
     { title: "Front-End & Web", icon: <Globe size={28}/>, color: "cyan", 
@@ -203,12 +260,11 @@ const Port = () => {
       iconClasses: "p-4 bg-purple-500/10 rounded-2xl text-purple-400 shadow-lg",
       blurClasses: "bg-purple-500/5"
     },
-    { title: "Mechatronics & IoT", icon: <Cpu size={28}/>, color: "pink", 
+    { title: "Data Analytics & BI", icon: <DatabaseIcon size={28}/>, color: "pink", 
       skills: [
-        "C++ / Embedded C", 
-        "ESP32 / Arduino", 
-        "Robotics",
-        "3D Modeling"
+        "Microsoft Excel / Google Sheets", 
+        "Google Data Studio", 
+        "Tableau"
       ],
       cardClasses: "border-t border-l border-pink-500/30",
       iconClasses: "p-4 bg-pink-500/10 rounded-2xl text-pink-400 shadow-lg",
@@ -218,6 +274,62 @@ const Port = () => {
 
   // --- DATA PROJECTS ---
   const projects = [
+    { 
+      title: "Generation and Distribution Monitoring System", 
+      desc: "Built an end-to-end telemetry system collecting field data via Modbus RTU, routed through Node-RED to HeidiSQL, and visualized on real-time Grafana dashboards.",
+      image: dashboardImg,
+      color: "orange", 
+      tags: ["Node-RED", "SQL", "Grafana"],
+      bgClasses: "bg-gradient-to-tr from-orange-900/40 via-transparent to-gray-900/40",
+      hoverShadow: "hover:shadow-[0_0_50px_rgba(251,146,60,0.3)]",
+      hoverBorder: "group-hover:border-orange-500/50",
+      hoverText: "group-hover:text-orange-400",
+      tagBg: "bg-orange-500/10",
+      tagText: "text-orange-300",
+      tagBorder: "border-orange-500/20"
+    },
+    { 
+      title: "Business Intelligence Dashboard", 
+      desc: "Developed an interactive Business Intelligence dashboard using Google Data Studio to visualize key performance indicators and provide actionable data-driven insights.",
+      image: biImg,
+      color: "cyan", 
+      tags: ["Microsoft Excel", "Google Data Studio", "Data Visualization"],
+      bgClasses: "bg-gradient-to-tr from-cyan-900/40 via-transparent to-gray-900/40",
+      hoverShadow: "hover:shadow-[0_0_50px_rgba(6,182,212,0.3)]",
+      hoverBorder: "group-hover:border-cyan-500/50",
+      hoverText: "group-hover:text-cyan-400",
+      tagBg: "bg-cyan-500/10",
+      tagText: "text-cyan-300",
+      tagBorder: "border-cyan-500/20"
+    },
+    { 
+      title: "Network Topology Design", 
+      desc: "Designed and implemented a scalable network topology, ensuring optimal performance and security.", 
+      image: topologiImg, 
+      color: "cyan", 
+      tags: ["Networking", "Design", "Cisco Packet Tracer", "AutoCAD"],
+      bgClasses: "bg-gradient-to-tr from-cyan-900/40 via-transparent to-gray-900/40",
+      hoverShadow: "hover:shadow-[0_0_50px_rgba(139,92,246,0.3)]",
+      hoverBorder: "group-hover:border-purple-500/50",
+      hoverText: "group-hover:text-purple-400",
+      tagBg: "bg-purple-500/10",
+      tagText: "text-purple-300",
+      tagBorder: "border-purple-500/20"
+    },
+    { 
+      title: "Electricity Production Prediction System", 
+      desc: "Developed a machine learning web application using Random Forest Regressor to forecast hydropower electricity output based on operational and environmental data.", 
+      image: prediksiImg,
+      color: "pink", 
+      tags: ["Machine Learning", "Random Forest Regressor", "Predictive Modelling", "Pandas", "Scikit-learn", "Streamlit"],
+      bgClasses: "bg-gradient-to-tr from-pink-900/40 via-transparent to-gray-900/40",
+      hoverShadow: "hover:shadow-[0_0_50px_rgba(236,72,153,0.3)]",
+      hoverBorder: "group-hover:border-pink-500/50",
+      hoverText: "group-hover:text-pink-400",
+      tagBg: "bg-pink-500/10",
+      tagText: "text-pink-300",
+      tagBorder: "border-pink-500/20"
+    },
     { 
       title: "Kid Curious", 
       desc: "Designed UI/UX for an interactive educational app (Kurikulum Merdeka) for elementary students. Implemented gamification (avatars, leaderboards) and a digital report card system for academic tracking.", 
@@ -378,21 +490,13 @@ const Port = () => {
       <div className="fixed top-0 left-0 w-96 h-96 bg-purple-600 rounded-full blur-[150px] opacity-20 -translate-x-1/2 -translate-y-1/2 z-0 animate-pulse-slow"></div>
       <div className="fixed bottom-0 right-0 w-96 h-96 bg-cyan-600 rounded-full blur-[150px] opacity-10 translate-x-1/2 translate-y-1/2 z-0"></div>
 
-      {/* Navbar: Responsif (Stack di HP, Row di Desktop) */}
+      {/* Navbar: Selalu di tengah */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'py-4' : 'bg-transparent border-transparent py-6'}`}>
-        <div className="container mx-auto px-6 flex flex-col md:flex-row justify-center md:justify-between items-center gap-4 md:gap-0">
+        <div className="container mx-auto px-6 flex justify-center items-center">
           
-          {/* LOGO */}
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}
-            className="text-2xl font-bold font-mono text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 tracking-tighter cursor-pointer group relative" onClick={() => scrollTo('home')}>
-             <span className="relative z-10">&lt;DEV_MECHA /&gt;</span>
-             <div className="absolute inset-0 bg-purple-500/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
-          </motion.div>
-          
-          {/* MENU KAPSUL - Muncul di HP (Tengah) dan Desktop (Kanan) */}
+          {/* MENU KAPSUL - Selalu di tengah */}
           <div className="flex flex-wrap justify-center items-center space-x-1 md:space-x-0 bg-[#292A3D] p-1.5 rounded-full border border-gray-700/50 shadow-xl overflow-x-auto max-w-full">
-            {['Home', 'About', 'Skills', 'Project', 'Contact'].map((item) => {
+            {['Home', 'About', 'Experience', 'Skills', 'Project', 'Certificate', 'Contact'].map((item) => {
                  const sectionId = (
                      item === 'Skiils' ? 'skills' : 
                      item === 'Project' ? 'projects' : 
@@ -554,8 +658,59 @@ const Port = () => {
         </motion.div>
       </section>
 
+      {/* Experience Section */}
+      <section id="experience" className="relative z-10 py-32">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="container mx-auto px-6">
+          <motion.div variants={fadeInUp} className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 flex justify-center items-center gap-3">
+              <Server className="text-cyan-500" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-gray-400">Experience</span>
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">Hands-on industry experience bridging software systems and industrial infrastructure.</p>
+          </motion.div>
+
+          {experiences.map((exp, idx) => (
+            <motion.div 
+              key={idx} 
+              variants={fadeInUp} 
+              className="flex flex-col md:flex-row gap-10 items-center bg-[#0f0f1a] border border-cyan-500/20 rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]"
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+
+              <div className="w-full md:w-2/5 flex-shrink-0 relative z-10">
+                <div className="grid grid-cols-1 gap-3">
+                  {exp.images.map((img, iIdx) => (
+                    <div key={iIdx} className="relative rounded-xl overflow-hidden border border-cyan-500/30 shadow-2xl">
+                      <img 
+                        src={img} 
+                        alt={`${exp.company} - ${exp.role} ${iIdx + 1}`} 
+                        className="w-full h-40 md:h-52 object-cover"
+                        onError={(e) => { e.target.onerror = null; e.target.src = profileImg; }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="w-full md:w-3/5 relative z-10">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">{exp.company}</h3>
+                <p className="text-cyan-400 font-mono text-sm mb-6">{exp.role}</p>
+                <ul className="space-y-3 text-gray-400 text-sm md:text-base leading-relaxed">
+                  {exp.points.map((point, pIdx) => (
+                    <li key={pIdx} className="flex gap-3">
+                      <span className="text-cyan-400 mt-1 flex-shrink-0">▹</span>
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </section>
+
       {/* Skills Section */}
-      <section id="skills" className="relative z-10 py-32">
+      <section id="skills" className="relative z-10 py-32 bg-[#080814]/50 backdrop-blur-sm">
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="container mx-auto px-6">
           <motion.div variants={fadeInUp} className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 flex justify-center items-center gap-3"><Layers className="text-purple-500 animate-bounce-slow" /><span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-gray-400">Skills</span></h2>
@@ -620,10 +775,13 @@ const Port = () => {
                          {/* UPDATED BADGE LOGIC HERE */}
                          {
                            proj.title === 'Smart Waste Monitoring' ? 'IoT, ML, ES' :
+                           proj.title === 'Network Topology Design' ? 'Topology' :
+                           proj.title === 'Business Intelligence Dashboard' ? 'BI' :
+                           proj.title === 'Generation and Distribution Monitoring System' ? 'IoT, Data Visualization' :
                            (proj.tags.includes('Figma') || proj.tags.includes('UI/UX')) ? 'UI/UX Design' : 
                            (proj.tags.includes('NLP') || proj.tags.includes('Naive Bayes') || (proj.tags.includes('Python') && proj.tags.includes('psutil'))) ? 'AI/ML/OS' : 
                            proj.tags.includes('Expert System') ? 'Expert System' : 
-                           (proj.tags.includes('Robotics') || proj.tags.includes('IoT')) ? 'IoT' : 
+                           (proj.tags.includes('Robotics') || proj.tags.includes('IoT')) ? 'IoT' :
                            'Web Dev'
                          }
                      </div>
@@ -636,6 +794,45 @@ const Port = () => {
                  <div className={`absolute inset-0 border-2 border-transparent transition-colors duration-500 pointer-events-none ${proj.hoverBorder}`}></div>
                </motion.div>
              ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Certificate Section */}
+      <section id="certificate" className="relative z-10 py-32 bg-[#080814]/50 backdrop-blur-sm">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="container mx-auto px-6">
+          <motion.div variants={fadeInUp} className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 flex justify-center items-center gap-3">
+              <FileText className="text-cyan-500" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-gray-400">Certificate</span>
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">Professional certifications validating hands-on technical competencies.</p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {certificates.map((cert, idx) => (
+              <motion.a
+                key={idx}
+                href={cert.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={fadeInUp}
+                whileHover={{ y: -10 }}
+                className={`group relative bg-[#0f0f1a] rounded-3xl overflow-hidden border border-gray-800/50 shadow-xl transition-all duration-500 flex flex-col ${cert.hoverShadow} ${cert.hoverBorder}`}
+              >
+                <div className="p-8 flex-grow flex flex-col justify-between relative z-20">
+                  <div>
+                    <h3 className={`text-xl font-bold text-white mb-3 transition-colors ${cert.hoverText}`}>{cert.title}</h3>
+                    <p className="text-gray-400 text-sm leading-relaxed mb-6">{cert.desc}</p>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex flex-wrap gap-2 text-xs font-mono font-medium">
+                      {cert.tags.map(t => <span key={t} className={`px-3 py-1 rounded-full ${cert.tagBg} ${cert.tagText} border ${cert.tagBorder}`}>{t}</span>)}
+                    </div>
+                    <ExternalLink size={18} className={`${cert.tagText} group-hover:translate-x-1 transition-transform flex-shrink-0`} />
+                  </div>
+                </div>
+              </motion.a>
+            ))}
           </div>
         </motion.div>
       </section>
